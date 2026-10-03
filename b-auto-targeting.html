@@ -17,28 +17,33 @@
   <p id="selection" aria-live="polite"></p>
   <button id="advance" type="button">Next wave</button>
   <script>
+
     const waves = [
       [
         { name: "Brute", health: 45, maxHealth: 120, color: "#ba5379" },
         { name: "Runner", health: 60, maxHealth: 70, color: "#5db3a1" },
         { name: "Wisp", health: 20, maxHealth: 40, color: "#ae8bcc" },
       ],
+      
       [
         { name: "North", health: 40, maxHealth: 90, color: "#ba5379" },
         { name: "South", health: 40, maxHealth: 55, color: "#5db3a1" },
       ],
+      
       [],
+      
       [
         { name: "Fallen", health: 0, maxHealth: 80, color: "#ae8bcc" },
       ],
     ];
+    
     let waveIndex = 0;
     const canvas = document.querySelector("#field");
     const ctx = canvas.getContext("2d");
 
     function chooseTarget(enemies) {
       let target = null;
-      // Pick the living enemy with the greatest maximum health.
+      // Pick the living enemy with the current greatest maximum health.
       for (const enemy of enemies) {
         // If health is zero, that enemy is not alive.
         if (enemy.health <= 0)
